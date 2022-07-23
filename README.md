@@ -15,7 +15,7 @@ This is the open source SDK of Shanghai JianQiao University.
 - Daily iHealth Sign
 > Useful features will be constantly updated
 
-## Project on Pypi
+## Project on PyPi
 [missuo/GenchAPI](https://pypi.org/project/GenchAPI/)
 
 ## Usage
