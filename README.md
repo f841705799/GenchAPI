@@ -2,7 +2,7 @@
  * @Author: Vincent Young
  * @Date: 2022-07-24 03:55:55
  * @LastEditors: Vincent Young
- * @LastEditTime: 2022-07-24 18:54:48
+ * @LastEditTime: 2022-07-24 18:55:54
  * @FilePath: /GenchAPI/README.md
  * @Telegram: https://t.me/missuo
  * 
@@ -12,7 +12,7 @@
 This is the open source SDK of Shanghai JianQiao University.
 
 ## Features
-- Daily iHealth Sign
+- [x] Daily iHealth Sign
 
 **Useful features will be constantly updated**
 
