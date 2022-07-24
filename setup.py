@@ -2,7 +2,7 @@
 Author: Vincent Young
 Date: 2022-07-24 04:27:43
 LastEditors: Vincent Young
-LastEditTime: 2022-07-24 05:07:32
+LastEditTime: 2022-07-24 18:57:32
 FilePath: /GenchAPI/setup.py
 Telegram: https://t.me/missuo
 
@@ -16,7 +16,7 @@ with open("README.md","r") as fh:
 setup(
     name="GenchAPI",
     author="missuo",
-    version="0.0.3",
+    version="0.0.4",
     license='MIT',
     long_description= long_description,
     long_description_content_type="text/markdown",
@@ -31,8 +31,7 @@ setup(
     install_requires=[
         'requests',
         'bs4',
-        'lxml',
-        'bs4'
+        'lxml'
     ],
     classifiers=[
         'Environment :: Web Environment',
