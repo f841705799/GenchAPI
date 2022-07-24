@@ -2,7 +2,7 @@
  * @Author: Vincent Young
  * @Date: 2022-07-24 03:55:55
  * @LastEditors: Vincent Young
- * @LastEditTime: 2022-07-24 05:22:59
+ * @LastEditTime: 2022-07-24 18:54:48
  * @FilePath: /GenchAPI/README.md
  * @Telegram: https://t.me/missuo
  * 
@@ -13,7 +13,8 @@ This is the open source SDK of Shanghai JianQiao University.
 
 ## Features
 - Daily iHealth Sign
-> Useful features will be constantly updated
+
+**Useful features will be constantly updated**
 
 ## Project on PyPi
 [missuo/GenchAPI](https://pypi.org/project/GenchAPI/)
@@ -21,7 +22,7 @@ This is the open source SDK of Shanghai JianQiao University.
 ## Usage
 1. You need to install GenchAPI before.
 ~~~shell
-pip3 install GenchAPI
+pip install GenchAPI
 ~~~
 2. Create a new file with following code.
 ~~~python
@@ -29,8 +30,11 @@ from GenchAPI import GenchAPI
 GenchAPI.sign("1900001","123456")
 ~~~ 
 
+## Feedback
+[Issues](https://github.com/GenchEDU/GenchAPI/issues)
+
 ## Contributors
-- [missuo](https://github.com/missuo)
+[missuo](https://github.com/missuo)
 
 ## License
-MIT License
+[MIT License](https://github.com/GenchEDU/GenchAPI/main/LICENSE)
