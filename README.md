@@ -31,10 +31,10 @@ GenchAPI.sign("1900001","123456")
 ~~~ 
 
 ## Feedback
-[Issues](https://github.com/GenchEDU/GenchAPI/issues)
+[Issues](https://github.com/OwO-Network/GenchAPI/issues)
 
 ## Contributors
 [missuo](https://github.com/missuo)
 
 ## License
-[MIT License](https://github.com/GenchEDU/GenchAPI/main/LICENSE)
+[MIT License](https://github.com/OwO-Network/GenchAPI/main/LICENSE)
