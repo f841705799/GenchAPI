@@ -37,4 +37,4 @@ GenchAPI.sign("1900001","123456")
 [missuo](https://github.com/missuo)
 
 ## License
-[MIT License](https://github.com/OwO-Network/GenchAPI/main/LICENSE)
+[MIT License](https://github.com/OwO-Network/GenchAPI/blob/main/LICENSE)
