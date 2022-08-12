@@ -139,7 +139,7 @@ def sign(userid, password):
 
     lasturl = 'http://ihealth.hq.gench.edu.cn/mp/index'
     last = session.get(url = lasturl, headers = headers_ssonext)
-
+    """
     infourl = 'http://ihealth.hq.gench.edu.cn/api/login/clearSession?timestamp=1622123721700'
     infos = session.get(url = infourl)
     infos_dict = json.loads(infos.text)
@@ -154,7 +154,22 @@ def sign(userid, password):
         slocation = '上海'
         location = '上海市'
         xlocation = '浦东新区'
-        print(username, "ihealth login successful!")
+    """
+
+    infoyesurl = 'http://ihealth.hq.gench.edu.cn/api/GDaily/pageuseryestoday'
+    info_headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36 Edg/104.0.1293.47",
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+    }
+    info_data = {
+        "page": 1,
+        "size": 200
+    }
+    infos = session.post(url = infoyesurl,headers=info_headers,data=info_data,timeout = 300)
+    infos_dict = json.loads(infos.text)
+    if(infos_dict['current'] == 1):
+
+        print(userid, "ihealth login successful!")
         add_url = 'http://ihealth.hq.gench.edu.cn/api/GDaily/add'
         add_header = {
             'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/7.0.18(0x17001229) NetType/4G Language/zh_TW',
@@ -163,28 +178,54 @@ def sign(userid, password):
         
         ischool = "0"
         add_data = {
-            "type":"学生",
-            "uuid":uuid,
-            "userid":userid,
-            "username":username,
-            "collegename":collegename,
-            "classname":classname,
-            "phone":phone,
-            "slocationcode":"310000",
-            "slocation":slocation,
-            "xlocationcode":310115,
-            "xlocation":xlocation,
-            "locationcode":"310100",
-            "location":location,
-            "fever":"0",
-            "symptomids":"[]",
-            "diagnosis":"0",
-            "touchquezhen":"0",
-            "inschool": ischool
+            "id": infos_dict["records"][0]["id"],
+            "uuid": infos_dict["records"][0]["uuid"],
+            "type": infos_dict["records"][0]["type"],
+            "userid": infos_dict["records"][0]["userid"],
+            "depid": infos_dict["records"][0]["depid"],
+            "depname": infos_dict["records"][0]["depname"],
+            "collegeid": infos_dict["records"][0]["collegeid"],
+            "collegename": infos_dict["records"][0]["collegename"],
+            "majorid": infos_dict["records"][0]["majorid"],
+            "majorname": infos_dict["records"][0]["majorname"],
+            "classid": infos_dict["records"][0]["classid"],
+            "classname": infos_dict["records"][0]["classname"],
+            "phone": infos_dict["records"][0]["phone"],
+            "username": infos_dict["records"][0]["username"],
+            "gender": infos_dict["records"][0]["gender"],
+            "idcard": infos_dict["records"][0]["idcard"],
+            "address": infos_dict["records"][0]["address"],
+            "shanghai": infos_dict["records"][0]["shanghai"],
+            "locationcode": infos_dict["records"][0]["locationcode"],
+            "location": infos_dict["records"][0]["location"],
+            "fever": 0,
+            "symptomids": [],
+            "symptom": "",
+            "del": 0,
+            "errortype": 0,
+            "teacheruid": infos_dict["records"][0]["teacheruid"],
+            "teachername": infos_dict["records"][0]["teachername"],
+            "slocationcode": infos_dict["records"][0]["slocationcode"],
+            "slocation": infos_dict["records"][0]["slocation"],
+            "xlocationcode": infos_dict["records"][0]["xlocationcode"],
+            "xlocation": infos_dict["records"][0]["xlocation"],
+            "detention": infos_dict["records"][0]["detention"],
+            "diagnosis": infos_dict["records"][0]["diagnosis"],
+            "touchquezhen": infos_dict["records"][0]["touchquezhen"],
+            "caretype": infos_dict["records"][0]["caretype"],
+            "seventravel": infos_dict["records"][0]["seventravel"],
+            "sevendangetran": infos_dict["records"][0]["sevendangetran"],
+            "sevendange": infos_dict["records"][0]["sevendange"],
+            "inschool": infos_dict["records"][0]["inschool"],
+            "latitude": infos_dict["records"][0]["latitude"],
+            "longitude": infos_dict["records"][0]["longitude"],
+            "distance": infos_dict["records"][0]["distance"],
+            "fanprocess": infos_dict["records"][0]["fanprocess"]
         }
         add_result = session.post(headers=add_header, url=add_url, data=add_data).text
+        
         if '添加成功' in add_result:
-            print(username, "Sign successful!")
+            print(userid, "Sign successful!")
         else:
             print(userid, "Sign failed!")
     else:
