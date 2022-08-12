@@ -1,0 +1,40 @@
+name: AutoCheckin
+
+on: 
+  workflow_dispatch:
+  release:
+    types: [published]
+  push:
+    tags:
+    - 'v*'
+  #  branches: 
+  #    - master
+  schedule:
+    - cron: "0 12 * * *"
+  watch:
+    types: [started]
+   
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Set up Python #安装python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install requirements #安装轮子
+      run: |
+        pip install -e ./
+        
+    - name: Run script
+      env:
+        username: ${{ secrets.username }}
+        password: ${{ secrets.password }}
+      run: |
+        from GenchAPI import GenchAPI
+        import os
+        GenchAPI.sign(os.environ.get('username') , os.environ.get('password'))
+      shell: python
